@@ -1,0 +1,142 @@
+.logo{
+    padding: 10px 0;
+    float: left;
+}
+.logo img{
+    width: 250px;
+}
+.list-wrapper {
+    min-height: 400px
+}
+.blog-post .cat-title{
+    padding: 15px 0 5px 0 !important;
+    font-weight: bold;
+    border-bottom: 2px solid #2ed87b;
+    margin-bottom: 15px;
+}
+.blog-post .media img{
+    width: 100px;
+}
+.mb-md-15{
+    margin-bottom: 5px!important;
+}
+.entry-media img{
+    min-height: 275px !important;
+}
+.new{
+    padding: 5px 15px 10px 15px;
+}
+.new .blog-post{
+    margin-bottom: 0;
+}
+.new h3{
+    padding: 15px 0 5px 0 !important;
+    font-weight: bold;
+    border-bottom: 2px solid #2ed87b;
+    margin-bottom: 15px;
+}
+.deal-title{
+    font-size: 13px;  
+    font-weight: bold
+}
+.deal-thumbnail{
+    width: 100%;
+    height: 105px;
+}
+.deal-single {
+    border-radius: 0;
+    min-height: 182px;
+}
+.banner{
+    background-image: url('/images/banner.jpg');
+    min-height: 250px
+}
+.banner-search, .banner-text{
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 9%;
+}
+.banner-search .search-input{
+    border-radius: 0;
+}
+.banner-text h2{
+    color: #fff;
+}
+
+@media (max-width: 320px){
+    .response .entry-content, .response .entry-footer{
+        display: none;
+
+    }
+    .response .entry-media{
+        float: left;
+        width: 100px;
+        height: 67px;
+        margin-right: 10px
+    }
+    .response .entry-media img{
+        height: 100px
+    }
+    .response .entry-wrapper{
+        padding: 5px !important;
+        font-size: 11px
+    }
+    .response .embed-responsive-16by9{
+        padding-bottom: 30%;
+    }
+    .response .entry-header h4{
+        font-size: 13px;
+        min-height: 0;
+    }
+}
+@media (max-width: 736px){
+    .response .entry-content,.response .entry-footer{
+        display: none;
+
+    }
+    .header-search{
+        padding-top: 0 !important;
+    }
+    .brand{
+        padding-bottom: 0 !important;
+    }
+    .bg-white{
+        padding-bottom: 10px
+    }
+    .response .entry-media{
+        float: left;
+        width: 100px;
+        height: 67px;
+        margin-right: 10px
+    }
+    .response .entry-media img{
+        height: 100px
+    }
+    .response .entry-wrapper{
+        padding: 5px !important;
+        font-size: 11px
+    }
+    .response .embed-responsive-16by9{
+        padding-bottom: 30%;
+    }
+    .response .entry-header h4{
+        font-size: 13px;
+        min-height: 0;
+    }
+}
+@media (max-width: 768px){
+    .response .entry-content,.response .entry-footer{
+        display: none
+    }
+    .response .entry-wrapper {
+        padding: 10px !important;
+        font-size: 85%;
+    }
+    .response .entry-header h4{
+        font-size: 13px !important;
+        min-height: 0 !important;
+    }
+    .brand {
+        padding-bottom: 0 !important;
+    }
+}
