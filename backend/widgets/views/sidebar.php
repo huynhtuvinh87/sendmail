@@ -28,11 +28,28 @@ use yii\widgets\Menu;
             echo Menu::widget([
                 'items' => [
                         ['label' => '<i class="fa fa-tachometer"></i> ' . \Yii::t('app', 'Home'), 'url' => ['site/index']],
-                        ['label' => '<i class="fa fa-thumb-tack"></i> ' . \Yii::t('app', 'Categories'), 'url' => ['category/index'],
+                        ['label' => '<i class="fa fa-thumb-tack"></i> ' . \Yii::t('app', 'Product') . '<span class="fa fa-chevron-down"></span>', 'url' => 'javascript:void(0)', 'items' => [
+                                ['label' => \Yii::t('app', 'Categories'), 'url' => ['category/index']],
+                                ['label' => \Yii::t('app', 'All Products'), 'url' => ['product/index']],
+                                ['label' => \Yii::t('app', 'Add New'), 'url' => ['product/create']],
+                                ['label' => \Yii::t('app', 'Tags'), 'url' => ['tag/index']],
+                        ],
                     ],
-                        ['label' => '<i class="fa fa-user"></i> ' . \Yii::t('app', 'Info') . '<span class="fa fa-chevron-down"></span>', 'url' => 'javascript:void(0)', 'items' => [
-                                ['label' => \Yii::t('app', 'All Infos'), 'url' => ['info/index']],
-                                ['label' => \Yii::t('app', 'Add New'), 'url' => ['info/create']],
+                        ['label' => '<i class="fa fa-thumb-tack"></i> ' . \Yii::t('app', 'Order'), 'url' => ['order/index'],
+                    ],
+                    ['label' => '<i class="fa fa-thumb-tack"></i> ' . \Yii::t('app', 'Service') . '<span class="fa fa-chevron-down"></span>', 'url' => 'javascript:void(0)', 'items' => [
+                                ['label' => \Yii::t('app', 'All Services'), 'url' => ['service/index']],
+                                ['label' => \Yii::t('app', 'Add New'), 'url' => ['service/create']],
+                        ],
+                    ],
+                        ['label' => '<i class="fa fa-thumb-tack"></i> ' . \Yii::t('app', 'Blogs') . '<span class="fa fa-chevron-down"></span>', 'url' => 'javascript:void(0)', 'items' => [
+                                ['label' => \Yii::t('app', 'All Blogs'), 'url' => ['blog/index']],
+                                ['label' => \Yii::t('app', 'Add New'), 'url' => ['blog/create']],
+                        ],
+                    ],
+                        ['label' => '<i class="fa fa-thumb-tack"></i> ' . \Yii::t('app', 'Slide') . '<span class="fa fa-chevron-down"></span>', 'url' => 'javascript:void(0)', 'items' => [
+                                ['label' => \Yii::t('app', 'All Slides'), 'url' => ['slide/index']],
+                                ['label' => \Yii::t('app', 'Add New'), 'url' => ['slide/create']],
                         ],
                     ],
                         ['label' => '<i class="fa fa-user"></i> ' . \Yii::t('app', 'User') . '<span class="fa fa-chevron-down"></span>', 'url' => 'javascript:void(0)', 'items' => [

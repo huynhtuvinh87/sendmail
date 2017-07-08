@@ -11,16 +11,10 @@ class Product extends Post {
     public $category;
     public $description;
     public $tag;
-    public $multiple_image;
-    public $price_fake;
     public $price;
     public $price_sale;
     public $images;
     public $featured;
-    public $buy_many;
-    public $tracking_link;
-    public $zodiac;
-    public $age;
 
     /**
      * @inheritdoc
@@ -28,14 +22,14 @@ class Product extends Post {
     public function rules() {
         $rules = [
                 [['title',], 'required'],
-                [['description', 'image', 'price', 'price_sale', 'price_fake', 'featured', 'buy_many', 'tracking_link'], 'string'],
-                [['category', 'tag', 'multiple_image', 'zodiac', 'age'], 'default']
+                [['description', 'image', 'price', 'price_sale', 'featured'], 'string'],
+                [['category', 'tag'], 'default']
         ];
         return array_merge(parent::rules(), $rules);
     }
 
     public function metaKeys() {
-        return ['tag', 'images', 'description', 'featured', 'price', 'price_sale', 'price_fake', 'buy_many', 'tracking_link', 'zodiac', 'age'];
+        return ['tag', 'images', 'description', 'featured', 'price', 'price_sale'];
     }
 
     /**
@@ -50,12 +44,7 @@ class Product extends Post {
             'price_fake' => 'Giá sỉ',
             'price' => 'Giá',
             'price_sale' => 'Giá khuyến mãi',
-            'content' => 'Nội dung',
-            'featured' => 'Nổi bật',
-            'buy_many' => 'Mua nhiều',
-            'tracking_link' => 'Tracking Link',
-            'zodiac' => 'Cung hoàng đạo',
-            'age' => 'Tuổi'
+            'content' => 'Nội dung'
                 ]
         );
     }
@@ -137,45 +126,6 @@ class Product extends Post {
         return $data;
     }
 
-    public function getZodiacs(&$data = []) {
-        $post = Post::findOne($this->id);
-        $zodiac = Zodiac::find()->all();
-        foreach ($zodiac as $key => $value) {
-            $item = Relationship::find()->where(['post_id' => $this->id])->all();
-            $cats = [];
-            if (!empty($item)) {
-                foreach ($item as $val) {
-                    $cats[] = $val->term_id;
-                }
-            }
-            if (in_array($value->id, $cats))
-                $checked = 1;
-            else
-                $checked = 0;
-            $data[] = ['id' => $value->id, 'title' => $value->title, 'checked' => $checked];
-        }
-        return $data;
-    }
-
-    public function getAges(&$data = []) {
-        $post = Post::findOne($this->id);
-        $age = Age::find()->all();
-        foreach ($age as $key => $value) {
-            $item = Relationship::find()->where(['post_id' => $this->id])->all();
-            $cats = [];
-            if (!empty($item)) {
-                foreach ($item as $val) {
-                    $cats[] = $val->term_id;
-                }
-            }
-            if (in_array($value->id, $cats))
-                $checked = 1;
-            else
-                $checked = 0;
-            $data[] = ['id' => $value->id, 'title' => $value->title, 'checked' => $checked];
-        }
-        return $data;
-    }
 
     public function getIPReview() {
         return Review::find()->where(['ip' => $_SERVER['REMOTE_ADDR'], 'post_id' => $this->id])->one();

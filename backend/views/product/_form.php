@@ -15,39 +15,7 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Enter title here'])->label(FALSE) ?>
         <?= $form->field($model, 'description')->textarea(['style' => 'height:100px']) ?>
         <?= $form->field($model, 'content')->textarea(['class' => 'text-editor']) ?>
-        <?= $form->field($model, 'tracking_link')->textInput() ?>
-        <div class="row">
-            <div class="col-sm-4"><?= $form->field($model, 'price_fake')->textInput(['type' => 'number', 'min' => 1]) ?></div>
-            <div class="col-sm-4"><?= $form->field($model, 'price')->textInput(['type' => 'number', 'min' => 1]) ?></div>
-            <div class="col-sm-4"><?= $form->field($model, 'price_sale')->textInput(['type' => 'number', 'min' => 1]) ?></div>
-        </div>
-        <div class="x_title">
-            <?= \Yii::t('app', 'Image silde') ?>
-        </div>
-        <div class="x_panel">
-            <article>
-                <?= $form->field($model, 'multiple_image[]')->fileInput(['multiple' => true, 'style' => 'display:none'])->label(FALSE) ?>
-                <div id="result" class="row"/>
-                <label for="product-multiple_image" class="col-sm-3">
-                    <img src="/uploads/film.jpg" class="img-thumbnail" style="height: 120px">
-                </label>
-                <?php
-                if ($model->images) {
-                    foreach ($model->images as $key => $value) {
-                        ?>
-                        <div class="col-sm-3 img-item">
-                            <a href="javascript:void(0)">
-                                <i class="fa fa-trash" style="position: absolute;top: 40%; left: 45%"></i>
-                                <img src="<?= \Yii::$app->params['domain'] ?>/uploads/<?= $value ?>" style="width:100%; " class="img-thumbnail">
-                                <input type="hidden" name="images[]" value="<?= $value ?>">
-                            </a>
-                        </div>
-                        <?php
-                    }
-                }
-                ?>
-            </article>
-        </div>
+     <?= $form->field($model, 'price')->textInput(['type' => 'number', 'min' => 1]) ?>
     </div>
     <div class="col-md-3 col-sm-3 col-xs-12">
         <div class="x_title">
@@ -55,9 +23,11 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="x_panel">
             <?= $form->field($model, 'status')->dropDownList($model->postStatus)->label(FALSE) ?>
-            <?= $form->field($model, 'featured')->checkbox() ?>
-            <?= $form->field($model, 'buy_many')->checkbox() ?>
+            
         </div>
+        <?php 
+        if($model->getCategories()){
+        ?>
         <div class="x_title">
             <?= \Yii::t('app', 'Categories') ?>
         </div>
@@ -73,36 +43,9 @@ use yii\widgets\ActiveForm;
                     ])->label(FALSE);
             ?>
         </div>
-        <div class="x_title">
-            Cung hoàng đạo
-        </div>
-        <div class="x_panel">
-            <?=
-                    $form->field($model, 'zodiac')
-                    ->checkboxList($model->getZodiacs(), [
-                        'item' => function($index, $label, $name, $checked, $value) {
-                            $check = $label['checked'] == 1 ? ' checked="checked"' : '';
-                            $return = '<div class="checkbox"><label><input type="checkbox" name="' . $name . '" ' . $check . ' value="' . $label['id'] . '" >' . $label['title'] . '</label></div>';
-                            return $return;
-                        }
-                    ])->label(FALSE);
-            ?>
-        </div>
-        <div class="x_title">
-            12 Con giáp
-        </div>
-        <div class="x_panel">
-            <?=
-                    $form->field($model, 'age')
-                    ->checkboxList($model->getAges(), [
-                        'item' => function($index, $label, $name, $checked, $value) {
-                            $check = $label['checked'] == 1 ? ' checked="checked"' : '';
-                            $return = '<div class="checkbox"><label><input type="checkbox" name="' . $name . '" ' . $check . ' value="' . $label['id'] . '" >' . $label['title'] . '</label></div>';
-                            return $return;
-                        }
-                    ])->label(FALSE);
-            ?>
-        </div>
+    <?php 
+        }
+    ?>
         <div class="x_title">
             <?= \Yii::t('app', 'Image') ?>
         </div>
